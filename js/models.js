@@ -73,10 +73,44 @@ class StoryList {
    * Returns the new Story instance
    */
 
-  async addStory( /* user, newStory */) {
-    // UNIMPLEMENTED: complete this function!
+  //make post request to create a new story--> unpack response
+  //make a new instance of story with new info
+  //return new instance
+
+  async addStory(user, newStory) {
+    //storyId and createdAt --> pull from json response
+    console.log('test for addStory')
+    const token = user.token;
+    const title = newStory.title;
+    const author = newStory.author;
+    const url = newStory.url;
+
+    const username = user.username;
+    // const createdAt = user.createdAt; --> from a fetch request
+
+    const tempUrl = `${BASE_URL}/stories`;
+    const response = await fetch(tempUrl,
+      {
+        method: "POST",
+        body: `token: ${token},
+       story: {author:${author},
+       title:${title},
+       url: ${url}},
+       `});
+
+    const newStoryInfo = await response.json();
+
+    const storyId = newStoryInfo.story.storyId;
+    const createdAt = newStoryInfo.story.createdAt;
+
+    let newStoryInstance = new Story(storyId, title, author, url,
+      username, createdAt);
+
+    return newStoryInstance;
   }
 }
+
+
 
 
 /******************************************************************************

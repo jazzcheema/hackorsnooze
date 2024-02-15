@@ -2,6 +2,7 @@
 
 // This is the global list of the stories, an instance of StoryList
 let storyList;
+console.log(storyList);
 
 /** Get and show stories when site first loads. */
 
