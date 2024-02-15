@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Hack or Snooze</title>
-  <link rel="stylesheet" 
+  <link rel="stylesheet"
         href="https://www.unpkg.com/bootstrap-icons/font/bootstrap-icons.css">
   <link rel="stylesheet" href="css/site.css">
   <link rel="stylesheet" href="css/user.css">
@@ -33,6 +33,7 @@
 <nav>
   <div class="navbar-brand">
     <a class="nav-link" href="#" id="nav-all">Hack or Snooze</a>
+    <a class="nav-link" href="#" id="nav-submit">submit</a>
   </div>
   <div class="nav-right">
     <a class="nav-link" href="#" id="nav-login">login/signup</a>
@@ -40,6 +41,24 @@
     <a class="hidden" id="nav-logout" href="#"><small>(logout)</small></a>
   </div>
 </nav>
+
+<section class="account-forms-container container">
+  <!-- Submit form -->
+  <form id="submit-form" class="account-form hidden">
+    <div>
+      <label for="author">Author</label>
+      <input type="text" id="author" value="author name">
+    </div>
+    <div>
+      <label for="title">Title</label>
+      <input type="text" id="title" value="story title">
+    </div>
+    <div>
+      <label for="url">url</label>
+      <input type="text" id="url" value="story url">
+    </div>
+  </form>
+  </section>
 
 <!-- area for stories (all stories, user stories, favorites) -->
 <section class="stories-container container">
