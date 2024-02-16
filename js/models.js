@@ -247,7 +247,7 @@ class User {
 
     const favoriteStoryAdded = await response.json();
     console.debug(favoriteStoryAdded.message);
-    
+
   }
 
   /** Removes story to server list of user favorites.

@@ -98,11 +98,11 @@ $('#all-stories-list').on('click', 'i', addStoryToFavoriteOnClick);
 function putFavoritesOnPage() {
   console.debug("putFavoritesOnPage");
 
-  $allStoriesList.empty();
+  $favoritesList.empty();
 
   // loop through all of our stories and generate HTML for them
-  for (let story of storyList.stories) {
+  for (let story of currentUser.favorites) {
     const $story = generateStoryMarkup(story);
-    $allStoriesList.append($story);
+    $favoritesList.append($story);
   }
 }
