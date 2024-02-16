@@ -54,14 +54,14 @@ function putStoriesOnPage() {
 /** Upon click of the nav submit button, grabs new story submit form inputs,
  * creates an instance of Story and adds article to the DOM.
  */
-
+//TODO: refine name postNewStoryOnSubmit
 async function postNewStoriesOnSubmit(evt) {
   evt.preventDefault();
 
   const author = $('#author').val();
   const title = $('#title').val();
   const url = $('#url').val();
-
+//TODO: don't use params in name, it has a more specific meaning
   const storyParams = { author, title, url };
   const newStory = await storyList.addStory(currentUser, storyParams);
 

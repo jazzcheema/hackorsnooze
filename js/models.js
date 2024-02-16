@@ -72,7 +72,8 @@ class StoryList {
    *
    * Returns the new Story instance
    */
-
+  //TODO: add instance to story list
+  //TODO: destructuring/object literals
   async addStory(user, newStory) {
     const token = user.loginToken;
     const title = newStory.title;
@@ -104,7 +105,7 @@ class StoryList {
     const newStoryInfo = await response.json();
     const storyId = newStoryInfo.story.storyId;
     const createdAt = newStoryInfo.story.createdAt;
-
+//TODO: use info from API as inputs (newStoryInfo.story)
     let newStoryInstance = new Story({
       storyId, title, author, url,
       username, createdAt

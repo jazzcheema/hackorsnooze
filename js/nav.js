@@ -37,7 +37,7 @@ function updateNavOnLogin() {
   $navUserProfile.text(`${currentUser.username}`).show();
   $navSubmit.show();
 }
-
+//TODO: in part three can hide page components
 /** Show submit form on click on "submit" */
 
 function navSubmitClick(evt) {
