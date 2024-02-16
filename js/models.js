@@ -96,7 +96,7 @@ class StoryList {
     );
 
     const newStoryInfo = await response.json();
-
+    console.debug(newStoryInfo.story)
     let newStoryInstance = new Story(newStoryInfo.story);
 
     //FIXME: possible issue
@@ -249,4 +249,24 @@ class User {
     const favoriteStoryAdded = await response.json();
     console.debug(favoriteStoryAdded.message);
   }
+
+
+  async unfavorite(story) {
+
+    const response = await fetch(`
+    ${BASE_URL}/users/${currentUser.username}/favorites/${story.storyId}`,
+      {
+        method: "DELETE",
+        body: JSON.stringify({ token: currentUser.loginToken }),
+        headers: {
+          "Content-Type": "application/JSON"
+        }
+      });
+    const deletedStory = await response.json();
+    console.debug(deletedStory.message);
+  }
+
+
+
 }
+

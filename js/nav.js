@@ -36,6 +36,7 @@ function updateNavOnLogin() {
   $navLogOut.show();
   $navUserProfile.text(`${currentUser.username}`).show();
   $navSubmit.show();
+  $navFavorites.show();
 }
 //TODO: in part three can hide page components
 /** Show submit form on click on "submit" */
@@ -43,8 +44,18 @@ function updateNavOnLogin() {
 function navSubmitClick(evt) {
   console.debug("navSubmitClick", evt);
   evt.preventDefault();
-
   $submitForm.show();
 }
 
 $navSubmit.on("click", navSubmitClick);
+
+
+
+// FIXME: come back to finish this function for favorites
+function navFavoriteClick(evt) {
+  console.debug("navFavorite", evt);
+  evt.preventDefault();
+
+}
+
+$navFavorites.on('click', navFavoriteClick);
