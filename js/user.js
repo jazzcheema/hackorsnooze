@@ -114,4 +114,5 @@ function updateUIOnUserLogin() {
   $allStoriesList.show();
   $(".account-forms-container").hide();
   updateNavOnLogin();
+  $favoriteStar.show();
 }

@@ -96,11 +96,10 @@ class StoryList {
     );
 
     const newStoryInfo = await response.json();
-    console.debug(newStoryInfo.story)
+    console.debug(newStoryInfo.story);
     let newStoryInstance = new Story(newStoryInfo.story);
 
-    //FIXME: possible issue
-    new StoryList(newStoryInstance);
+    storyList.stories.unshift(newStoryInstance);
 
     return newStoryInstance;
   }
