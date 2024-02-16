@@ -2,7 +2,6 @@
 
 // This is the global list of the stories, an instance of StoryList
 let storyList;
-console.log(storyList);
 
 /** Get and show stories when site first loads. */
 
@@ -51,3 +50,24 @@ function putStoriesOnPage() {
 
   $allStoriesList.show();
 }
+
+
+async function postNewStoriesOnSubmit(evt) {
+  evt.preventDefault();
+
+  const author = $('#author').val();
+  const title = $('#title').val();
+  const url = $('#url').val();
+
+  const storyParams = { author, title, url };
+  const newStory = await storyList.addStory(currentUser, storyParams);
+
+  const $storyMarkUp = generateStoryMarkup(newStory);
+  $allStoriesList.prepend($storyMarkUp);
+
+  $submitForm.hide();
+}
+
+$submitButton.on('click', postNewStoriesOnSubmit);
+
+

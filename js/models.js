@@ -88,22 +88,27 @@ class StoryList {
       }
     };
 
+
     const tempUrl = `${BASE_URL}/stories`;
     const response = await fetch(
       tempUrl,
-      { method: "POST",
+      {
+        method: "POST",
         body: JSON.stringify(bodyData),
         headers: {
           "Content-Type": "application/json"
-        }}
+        }
+      }
     );
 
     const newStoryInfo = await response.json();
     const storyId = newStoryInfo.story.storyId;
     const createdAt = newStoryInfo.story.createdAt;
 
-    let newStoryInstance = new Story(storyId, title, author, url,
-      username, createdAt);
+    let newStoryInstance = new Story({
+      storyId, title, author, url,
+      username, createdAt
+    });
 
     return newStoryInstance;
   }
