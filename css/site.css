@@ -110,6 +110,10 @@ form > hr {
 cursor: pointer;
 }
 
+.favorited{
+  background-color: rgba(104, 70, 132, 0.494);
+}
+
 /* responsive queries for tightening things up for mobile. */
 
 @media screen and (max-width: 576px) {

@@ -87,11 +87,34 @@ function addStoryToFavoriteOnClick(evt) {
   } else {
 
     $(evt.target).attr('class', 'bi bi-star');
+    $(evt.target).closest('li').toggleClass('favorited');
     currentUser.removeFavorite(storyId);
   }
 }
 
+
+
+// function favoriteStarOnFavoritesPage(evt) {
+//   const storyId = $(evt.target).closest('li').attr("id");
+//   if (!($(evt.target).hasClass('bi-star-fill'))) {
+//     $(evt.target).attr('class', 'bi bi-star');
+//     $(evt.target).attr('class', 'bi bi-star-fill');
+//     currentUser.removeFavorite(storyId);
+//     //adds favorited story to 'favorited' class.
+//     $(evt.target).closest('li').toggleClass('favorited');
+//   } else {
+//     $(evt.target).attr('class', 'bi bi-star-fill');
+//     $(evt.target).closest('li').toggleClass('favorited');
+//   }
+// }
+
+
 $('#all-stories-list').on('click', 'i', addStoryToFavoriteOnClick);
+
+
+//call on favorites-> clear elements on page-->
+
+$favoritesList.on('click', 'i', addStoryToFavoriteOnClick);
 
 //TODO:possibly insert favorites array below
 
@@ -105,4 +128,5 @@ function putFavoritesOnPage() {
     const $story = generateStoryMarkup(story);
     $favoritesList.append($story);
   }
+  $('.favorite-star').show();
 }

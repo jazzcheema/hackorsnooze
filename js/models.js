@@ -27,6 +27,23 @@ class Story {
     const url = new URL(this.url);
     return url.hostname;
   }
+
+  //accepts storyId -->
+  //loop through our storyList-->
+  //for each, identify storyId
+  //if it matches input, return that story instance
+  static getStoryById(storyId) {
+
+
+    for (let story of storyList) {
+      if (story.storyId === storyId) {
+        return story;
+      }
+    }
+
+  }
+
+
 }
 
 
@@ -246,7 +263,11 @@ class User {
       });
 
     const favoriteStoryAdded = await response.json();
+
     console.debug(favoriteStoryAdded.message);
+    console.log(favoriteStoryAdded);
+
+    currentUser.favorites.push();
 
   }
 
@@ -268,8 +289,6 @@ class User {
     const deletedStory = await response.json();
     console.debug(deletedStory.message);
   }
-
-
 
 }
 
