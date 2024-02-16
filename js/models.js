@@ -230,4 +230,23 @@ class User {
       return null;
     }
   }
+
+  /** Adds story to server list of user favorites.
+   *   - instance of Story
+   */
+
+  async addFavorite(story) {
+    const response = await fetch(
+      `${BASE_URL}/users/${currentUser.username}/favorites/${story.storyId}`,
+      {
+        method: "POST",
+        body: JSON.stringify({ token: currentUser.loginToken }),
+        headers: {
+          "Content-Type": "application/JSON"
+        }
+      });
+
+    const favoriteStoryAdded = await response.json();
+    console.debug(favoriteStoryAdded.message);
+  }
 }
