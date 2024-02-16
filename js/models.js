@@ -231,7 +231,7 @@ class User {
   }
 
   /** Adds story to server list of user favorites.
-   *   - instance of Story
+   *   - takes a storyId
    */
 
   async addFavorite(storyId) {
@@ -247,13 +247,17 @@ class User {
 
     const favoriteStoryAdded = await response.json();
     console.debug(favoriteStoryAdded.message);
+    
   }
 
+  /** Removes story to server list of user favorites.
+     *   - takes a storyId
+     */
 
-  async unfavorite(story) {
+  async removeFavorite(storyId) {
 
     const response = await fetch(`
-    ${BASE_URL}/users/${currentUser.username}/favorites/${story.storyId}`,
+    ${BASE_URL}/users/${currentUser.username}/favorites/${storyId}`,
       {
         method: "DELETE",
         body: JSON.stringify({ token: currentUser.loginToken }),

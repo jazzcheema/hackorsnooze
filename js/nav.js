@@ -57,6 +57,7 @@ function navFavoriteClick(evt) {
   console.debug("navFavorite", evt);
   evt.preventDefault();
   hidePageComponents();
+  $('.favorited').show();
 
 }
 

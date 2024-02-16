@@ -77,17 +77,32 @@ $submitButton.on('click', postNewStoryOnSubmit);
 
 /** on click of favorite star--> change to filled-in star */
 function addStoryToFavoriteOnClick(evt) {
-
+  const storyId = $(evt.target).closest('li').attr("id");
   if (!($(evt.target).hasClass('bi-star-fill'))) {
     $(evt.target).attr('class', 'bi bi-star-fill');
-    //find the storyId in the DOM element that has been clicked
-    //use that storyId to grab the related instance of Story
-    //use that instance to call addFavorite()
-    const storyId = $(evt.target).closest('li').attr("id");
     currentUser.addFavorite(storyId);
+
+    //adds favorited story to 'favorited' class.
+    $(evt.target).closest('li').toggleClass('favorited');
   } else {
+
     $(evt.target).attr('class', 'bi bi-star');
+    currentUser.removeFavorite(storyId);
   }
 }
 
 $('#all-stories-list').on('click', 'i', addStoryToFavoriteOnClick);
+
+//TODO:possibly insert favorites array below
+
+function putFavoritesOnPage() {
+  console.debug("putFavoritesOnPage");
+
+  $allStoriesList.empty();
+
+  // loop through all of our stories and generate HTML for them
+  for (let story of storyList.stories) {
+    const $story = generateStoryMarkup(story);
+    $allStoriesList.append($story);
+  }
+}
