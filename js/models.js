@@ -72,20 +72,13 @@ class StoryList {
    *
    * Returns the new Story instance
    */
-  //TODO: add instance to story list
-  //TODO: destructuring/object literals
   async addStory(user, newStory) {
-    const token = user.loginToken;
-    const title = newStory.title;
-    const author = newStory.author;
-    const url = newStory.url;
-    const username = user.username;
     const bodyData = {
-      token: token,
+      token: user.loginToken,
       story: {
-        author: author,
-        title: title,
-        url: url
+        author: newStory.author,
+        title: newStory.title,
+        url: newStory.url
       }
     };
 
@@ -103,13 +96,11 @@ class StoryList {
     );
 
     const newStoryInfo = await response.json();
-    const storyId = newStoryInfo.story.storyId;
-    const createdAt = newStoryInfo.story.createdAt;
-//TODO: use info from API as inputs (newStoryInfo.story)
-    let newStoryInstance = new Story({
-      storyId, title, author, url,
-      username, createdAt
-    });
+
+    let newStoryInstance = new Story(newStoryInfo.story);
+
+    //FIXME: possible issue
+    new StoryList(newStoryInstance);
 
     return newStoryInstance;
   }
