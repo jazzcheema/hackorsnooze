@@ -51,6 +51,9 @@ function putStoriesOnPage() {
   $allStoriesList.show();
 }
 
+/** Upon click of the nav submit button, grabs new story submit form inputs,
+ * creates an instance of Story and adds article to the DOM.
+ */
 
 async function postNewStoriesOnSubmit(evt) {
   evt.preventDefault();
