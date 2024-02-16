@@ -234,9 +234,9 @@ class User {
    *   - instance of Story
    */
 
-  async addFavorite(story) {
+  async addFavorite(storyId) {
     const response = await fetch(
-      `${BASE_URL}/users/${currentUser.username}/favorites/${story.storyId}`,
+      `${BASE_URL}/users/${currentUser.username}/favorites/${storyId}`,
       {
         method: "POST",
         body: JSON.stringify({ token: currentUser.loginToken }),

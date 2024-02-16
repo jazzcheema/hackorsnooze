@@ -50,6 +50,7 @@ function putStoriesOnPage() {
   }
 
   $allStoriesList.show();
+  if (currentUser) $('.favorite-star').show();
 }
 
 /** Upon click of the nav submit button, grabs new story submit form inputs,
@@ -79,6 +80,11 @@ function addStoryToFavoriteOnClick(evt) {
 
   if (!($(evt.target).hasClass('bi-star-fill'))) {
     $(evt.target).attr('class', 'bi bi-star-fill');
+    //find the storyId in the DOM element that has been clicked
+    //use that storyId to grab the related instance of Story
+    //use that instance to call addFavorite()
+    const storyId = $(evt.target).closest('li').attr("id");
+    currentUser.addFavorite(storyId);
   } else {
     $(evt.target).attr('class', 'bi bi-star');
   }
