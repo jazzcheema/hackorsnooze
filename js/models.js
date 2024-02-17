@@ -28,22 +28,15 @@ class Story {
     return url.hostname;
   }
 
-  //accepts storyId -->
-  //loop through our storyList-->
-  //for each, identify storyId
-  //if it matches input, return that story instance
+  /** Given a storyId returns Story instance with that storyID */
+
   static getStoryById(storyId) {
-
-
-    for (let story of storyList) {
+    for (let story of storyList.stories) {
       if (story.storyId === storyId) {
         return story;
       }
     }
-
   }
-
-
 }
 
 
@@ -98,7 +91,6 @@ class StoryList {
         url: newStory.url
       }
     };
-
 
     const tempUrl = `${BASE_URL}/stories`;
     const response = await fetch(
@@ -246,17 +238,18 @@ class User {
       return null;
     }
   }
-
+//TODO: doctring, also adds to user instance favorites
+//TODO: instead of currentUser, can use this
   /** Adds story to server list of user favorites.
    *   - takes a storyId
    */
 
   async addFavorite(storyId) {
     const response = await fetch(
-      `${BASE_URL}/users/${currentUser.username}/favorites/${storyId}`,
+      `${BASE_URL}/users/${this.username}/favorites/${storyId}`,
       {
         method: "POST",
-        body: JSON.stringify({ token: currentUser.loginToken }),
+        body: JSON.stringify({ token: this.loginToken }),
         headers: {
           "Content-Type": "application/JSON"
         }
@@ -267,7 +260,8 @@ class User {
     console.debug(favoriteStoryAdded.message);
     console.log(favoriteStoryAdded);
 
-    currentUser.favorites.push();
+    this.favorites.push(Story.getStoryById(storyId));
+
 
   }
 

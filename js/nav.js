@@ -39,7 +39,7 @@ function updateNavOnLogin() {
   $navFavorites.show();
 
 }
-//TODO: in part three can hide page components
+
 /** Show submit form on click on "submit" */
 
 function navSubmitClick(evt) {
@@ -50,9 +50,8 @@ function navSubmitClick(evt) {
 
 $navSubmit.on("click", navSubmitClick);
 
+/** Shows favorites page on favorites nav click. */
 
-
-// FIXME: come back to finish this function for favorites
 function navFavoriteClick(evt) {
   console.debug("navFavorite", evt);
   evt.preventDefault();

@@ -92,31 +92,29 @@ function addStoryToFavoriteOnClick(evt) {
   }
 }
 
+/** Removes favorite from favorites page upon star click */
 
-
-// function favoriteStarOnFavoritesPage(evt) {
-//   const storyId = $(evt.target).closest('li').attr("id");
-//   if (!($(evt.target).hasClass('bi-star-fill'))) {
-//     $(evt.target).attr('class', 'bi bi-star');
-//     $(evt.target).attr('class', 'bi bi-star-fill');
-//     currentUser.removeFavorite(storyId);
-//     //adds favorited story to 'favorited' class.
-//     $(evt.target).closest('li').toggleClass('favorited');
-//   } else {
-//     $(evt.target).attr('class', 'bi bi-star-fill');
-//     $(evt.target).closest('li').toggleClass('favorited');
-//   }
-// }
-
+function removeFavoriteOnClick(evt) {
+  const storyId = $(evt.target).closest('li').attr("id");
+  //if (!($(evt.target).hasClass('bi-star-fill'))) {
+  $(evt.target).attr('class', 'bi bi-star-fill');
+  //  $(evt.target).attr('class', 'bi bi-star-fill');
+  currentUser.removeFavorite(storyId);
+  //   //adds favorited story to 'favorited' class.
+  //   $(evt.target).closest('li').toggleClass('favorited');
+  // } else {
+  //   $(evt.target).attr('class', 'bi bi-star-fill');
+  $(evt.target).closest('li').toggleClass('favorited');
+  // }
+}
 
 $('#all-stories-list').on('click', 'i', addStoryToFavoriteOnClick);
 
-
 //call on favorites-> clear elements on page-->
 
-$favoritesList.on('click', 'i', addStoryToFavoriteOnClick);
+$favoritesList.on('click', 'i', removeFavoriteOnClick);
 
-//TODO:possibly insert favorites array below
+/** Adds stories on favorites page UI */
 
 function putFavoritesOnPage() {
   console.debug("putFavoritesOnPage");
