@@ -31,11 +31,10 @@ class Story {
   /** Given a storyId returns Story instance with that storyID */
 
   static getStoryById(storyId) {
-    for (let story of storyList.stories) {
-      if (story.storyId === storyId) {
-        return story;
-      }
-    }
+
+    let storyIdList = storyList.stories.find(story => story.storyId === storyId);
+    console.debug("storyIdList=", storyIdList);
+    return storyIdList;
   }
 }
 
@@ -268,8 +267,6 @@ class User {
   /** Removes story to server list of user favorites.
      *   - takes a storyId
      */
-//TODO: instructions state this takes an instance, should follow instructions
-//TODO: check list of favorites to find particular story, and remove (use filter)
   async removeFavorite(storyId) {
 
     const response = await fetch(`
@@ -282,6 +279,10 @@ class User {
         }
       });
     const deletedStory = await response.json();
+
+    this.favorites = this.favorites.filter(favorite => favorite.storyId
+     !== storyId);
+
     console.debug(deletedStory.message);
   }
 
