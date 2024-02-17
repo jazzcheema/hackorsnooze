@@ -268,14 +268,15 @@ class User {
   /** Removes story to server list of user favorites.
      *   - takes a storyId
      */
-
+//TODO: instructions state this takes an instance, should follow instructions
+//TODO: check list of favorites to find particular story, and remove (use filter)
   async removeFavorite(storyId) {
 
     const response = await fetch(`
-    ${BASE_URL}/users/${currentUser.username}/favorites/${storyId}`,
+    ${BASE_URL}/users/${this.username}/favorites/${storyId}`,
       {
         method: "DELETE",
-        body: JSON.stringify({ token: currentUser.loginToken }),
+        body: JSON.stringify({ token: this.loginToken }),
         headers: {
           "Content-Type": "application/JSON"
         }

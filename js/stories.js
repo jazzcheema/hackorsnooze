@@ -19,6 +19,8 @@ async function getAndShowStoriesOnStart() {
  * Returns the markup for the story.
  */
 
+//TODO: logic to determine if markup should be favorited or not, use currentUser.favorites array
+
 function generateStoryMarkup(story) {
   // console.debug("generateStoryMarkup", story);
 
@@ -74,6 +76,8 @@ async function postNewStoryOnSubmit(evt) {
 
 $submitButton.on('click', postNewStoryOnSubmit);
 
+//TODO: use await when calling an async function (line 83, 91) IF you want return value from async function you must await
+//TODO: should consolidate remove favorite funciton to work no matter where it is clicked
 
 /** on click of favorite star--> change to filled-in star */
 function addStoryToFavoriteOnClick(evt) {
